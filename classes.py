@@ -11,6 +11,7 @@ class Knight(Player): # Can wear heavy armor, sword and shield, two-handed sword
         self.hp = self.hp + (self.vit * 10)
         self.maxHP = self.hp
         self.maxMP = self.mp
+        self.prof = "kn"
 
     def slash(self, entity):
         skillDmg = 5 * round(self.lvl * 1.4)
@@ -30,6 +31,7 @@ class Barbarian(Player): # Can only wear axe, no armors
         self.hp = self.hp + (self.vit * 5)
         self.maxHP = self.hp
         self.maxMP = self.mp
+        self.prof = "ba"
 
 class Mage(Player):  # Can wear robes, staves, tomes
     def __init__(self, name):
@@ -39,7 +41,8 @@ class Mage(Player):  # Can wear robes, staves, tomes
         self.mp = self.mp + (self.int * 10)
         self.maxHP = self.hp
         self.maxMP = self.mp
-
+        self.prof = "ma"
+        
 class Archer(Player): # Can wear light armour, crossbows, bows
     def __init__(self, name):
         super().__init__(name, "ARCHER")
@@ -47,12 +50,15 @@ class Archer(Player): # Can wear light armour, crossbows, bows
         self.hp = (self.hp - 20) + (self.vit * 10)
         self.maxHP = self.hp
         self.maxMP = self.mp
+        self.prof = "ar"
 
+"""
 myplayer = Knight("KingTako")
-myplayer.equipWeapon()
+myplayer.equipWeapon(wL.shortSword())
 enemy = eyeBat()
 myplayer.slash(enemy)
 print("{} (Level: {})\nHP: {}/{}".format(enemy.name, enemy.lvl, 
                                         enemy.hp, enemy.maxHP))
 print("{} (Level: {})\nHP: {}/{}\nMP: {}/{}\n".format(myplayer.name, myplayer.lvl, myplayer.hp, 
                                                     myplayer.maxHP, myplayer.mp, myplayer.maxMP))
+"""
