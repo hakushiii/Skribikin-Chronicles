@@ -11,6 +11,7 @@ def battleON(player,enemy):
         print(f"MP: {player.mp}/{player.maxMP}")
         
         
+
         if player.prof == "kn":
             print("you a knight")
             break
@@ -20,11 +21,15 @@ def battleON(player,enemy):
             pass
         if player.prof == "ar":
             pass
-            
+
+        checkHP()  
+
         enemyAttack()
+        checkHP()
         
         turn += 1
-        
+
+def checkHP():
     if player.hp <= 0:
         print('me ded')
         pass

@@ -1,5 +1,4 @@
 from item import Weapon
-from entity import Player
 from random import randint as rdi
 
 """ Swordsman Weapon """
@@ -11,8 +10,53 @@ class shortSword(Weapon):
                         "KNIGHT", 5, rdi(2, 3))
         self.ID = "1x00001"
 
-    def equipWeap(self, player):
-        if entity.prof == "kn":
-            entity.currentWeapon["mainHand"] = self.ID
-        else:
-            print("Your class is not a Swordsman")
+class SwordAndSheild(Weapon):
+    def __init__(self):
+        super().__init__("Sword and Sheild",
+                        "A Sword to Attack and a Shield to Defend.")
+
+class TwoHandedSword(Weapon):
+    def __init__(self):
+        super().__init__("Two Handed Sword",
+                        "Heavy Sword that deals great damage.")
+        self.ID = "1x00002"
+
+""" Barbarian Weapon """
+
+class Axe(Weapon):
+    def __init__(self):
+        super().__init__("Axe",
+                        "something something")
+        self.ID = "1x00003"
+
+""" Mage Weapon """
+
+class staff(Weapon):
+    def __init__(self):
+        super().__init__("Staff")
+        self.ID = "1x00004"
+
+class tome(Weapon):
+    def __init(self):
+        super().__init__("Tome")
+        self.ID = "1x00005"
+
+""" Archer Weapons """
+
+class shortBow(Weapon):
+    def __init__(self):
+        super().__init__("Short Bow",
+                        "Bow used by novice archers.")
+        self.ID = "1x00006"
+
+class longBow(Weapon):
+    def __init__(self):
+        super().__init__("Long Bow",
+                        "Who are you? Legolas?.")
+        self.ID = "1x00007"
+
+class crossBow(Weapon):
+    def __init__(self):
+        super().__init__("Crossbow",
+                        "A bow for cheeky bastards.")
+        self.ID = "1x00008"

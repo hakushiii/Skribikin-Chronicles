@@ -14,3 +14,9 @@ class Weapon(Items):
         self.prof = prof
         self.dmg = dmg
 
+class Armor(Items):
+    def __init__(self, name, desc, atype, slot, val, dfc):
+        super().__init__(name, desc, val)
+        self.slot = slot
+        self.atype = atype
+        self.dfc = dfc
