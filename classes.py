@@ -1,7 +1,6 @@
 from entity import Player
 from classSkills import activeSkill
 from entityList import eyeBat
-import weaponList as wL
 
 class Knight(Player): # Can wear heavy armor, sword and shield, two-handed sword
     def __init__(self, name):
@@ -51,14 +50,3 @@ class Archer(Player): # Can wear light armour, crossbows, bows
         self.maxHP = self.hp
         self.maxMP = self.mp
         self.prof = "ar"
-
-"""
-myplayer = Knight("KingTako")
-myplayer.equipWeapon(wL.shortSword())
-enemy = eyeBat()
-myplayer.slash(enemy)
-print("{} (Level: {})\nHP: {}/{}".format(enemy.name, enemy.lvl, 
-                                        enemy.hp, enemy.maxHP))
-print("{} (Level: {})\nHP: {}/{}\nMP: {}/{}\n".format(myplayer.name, myplayer.lvl, myplayer.hp, 
-                                                    myplayer.maxHP, myplayer.mp, myplayer.maxMP))
-"""

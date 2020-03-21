@@ -1,4 +1,4 @@
-import weaponList as wL
+import world, pickle
 
 class Entity:
     def __init__(self, name, lvl, hp):
@@ -47,20 +47,42 @@ class Player(Entity):
         self.vit = 1
         self.int = 1
         self.dex = 1
+        self.locationX, self.locationY = world.startingPosition
         self.currentWeapon = {"mainHand": None, "offHand": None}
         self.currentArmour = {"head": None, "body": None, "gloves": None, "leggings": None, "boots": None}
         self.inventory = {}
         self.moola = 0
 
-    def equipWeapon(self, weapon):
-        if self.prof == weapon.prof:
-            self.currentWeapon["mainHand"] = weapon.ID
-        else:
-            print("This is for {} class only".format(weapon.prof))
-    """
-    def lvlUP(self):
-        while self.xp >= self.lvlNXT:
-            self.lvl += 1
-            self.xp -= self.lvlNXT
-            self.lvlNXT = round(self.lvlNXT * 1.3)
-    """
+    def printInventory(self):
+        for item in self.inventory:
+            print(item, "\n")
+
+    def save(self):
+        with open('savefile', 'wb') as f:
+            pickle.dump(self, f)
+            print("\nGAME HAS BEEN SAVED!\n")
+
+    def exit(self):
+        exit()
+
+    def move(self, dx, dy):
+        self.locationX += dx
+        self.locationY += dy
+        print(world.tileExists(self.locationX, self.locationY).introText())
+
+    def moveNorth(self):
+        self.move(0, -1)
+
+    def moveSouth(self):
+        self.move(0, 1)
+
+    def moveEast(self):
+        self.move(1, 0)
+    
+    def moveWest(self):
+        self.move(-1, 0)
+
+    def doAction(self, action, **kwargs):
+        actionMethod = getattr(self, action.method.__name__)
+        if actionMethod:
+            actionMethod(**kwargs)
