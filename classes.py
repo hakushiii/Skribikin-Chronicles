@@ -45,7 +45,7 @@ class Mage(Player):  # Can wear robes, staves, tomes
         self.maxHP = self.hp
         self.maxMP = self.mp
         self.prof = "ma"
-        self.atype = "robes"
+        self.atype = "robe"
     
     def fireBall(self, entity):
         skillDmg = 6 * round(self.lvl * 1.2)
