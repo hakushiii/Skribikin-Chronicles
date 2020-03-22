@@ -1,6 +1,12 @@
 from item import Weapon
 from random import randint as rdi
 
+def equipWeapon(self, weapon):
+    if self.prof == weapon.prof:
+        self.currentWeapon["mainHand"] = weapon.ID
+    else:
+        print("This is for {} class only".format(weapon.prof))
+
 """ Swordsman Weapon """
 
 class shortSword(Weapon):
@@ -61,9 +67,3 @@ class crossBow(Weapon):
         super().__init__("Crossbow",
                         "A bow for cheeky bastards.")
         self.ID = "1x00008"
-
-def equipWeapon(self, weapon):
-    if self.prof == weapon.prof:
-        self.currentWeapon["mainHand"] = weapon.ID
-    else:
-        print("This is for {} class only".format(weapon.prof))

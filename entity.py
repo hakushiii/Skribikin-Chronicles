@@ -53,11 +53,13 @@ class Player(Entity):
         self.vit = 1
         self.int = 1
         self.dex = 1
-        self.currentWeapon = {"mainHand": None, "offHand": None}
-        self.currentArmour = {"head": None, "body": None, "gloves": None, "leggings": None, "boots": None}
-        self.inventory = {}
+        self.currentWeapon = [(None,None),(None,None)]
+        self.currentArmour = [(None,None),(None,None),(None,None),(None,None),(None,None)]
+        self.inventory = []
         self.moola = 0
         self.atype = ""
+        self.triggered_events = []
+        self.dfc = 0
 
     def basic(self, entity):
         basicDmg = 3 * round(self.lvl * 1.3)

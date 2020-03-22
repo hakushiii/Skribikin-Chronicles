@@ -13,6 +13,7 @@ def battleON(player,enemy):
             print(f"{enemy.name} has fainted.")
             player.xp += player.xp + enemy.lvl
             print(f"{player.name} has gained {enemy.lvl}XP!")
+            
 
     turn = 1
     while (player.hp > 0) and (enemy.hp > 0):
@@ -94,5 +95,5 @@ def battleON(player,enemy):
         checkHP()
         if (player.hp <= 0) or (enemy.hp <= 0):
             break
-
+        
         turn += 1

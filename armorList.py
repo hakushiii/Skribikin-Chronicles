@@ -1,6 +1,61 @@
 from item import Armor
 from random import randint as rdi
 
+def equipArmor(self, armor):
+    if self.atype == armor.atype:
+        if armor.slot == "head":
+            self.currentArmour[0] = armor.name,armor.dfc
+            self.dfc += armor.dfc
+        if armor.slot == "body":
+            self.currentArmour[1] = armor.name,armor.dfc
+            self.dfc += armor.dfc
+        if armor.slot == "gloves":
+            self.currentArmour[2] = armor.name,armor.dfc
+            self.dfc += armor.dfc
+        if armor.slot == "leggings":
+            self.currentArmour[3] = armor.name,armor.dfc
+            self.dfc += armor.dfc
+        if armor.slot == "boots":
+            self.currentArmour[4] = armor.name,armor.dfc
+            self.dfc += armor.dfc
+    else:
+        print("This is for {} class only".format(armor.atype))
+
+def unequipArmor(self):
+    print(f"""Select what armour to unequip:
+        [1] {self.currentArmour[0][0]}
+        [2] {self.currentArmour[1][0]}
+        [3] {self.currentArmour[2][0]}
+        [4] {self.currentArmour[3][0]}
+        [5] {self.currentArmour[4][0]}
+        [X] Back""")
+    choice = input(">")
+    if choice == "1":
+        self.dfc -= self.currentArmour[0][1]
+        self.currentArmour[0] = None,None,None
+    if choice == "2":
+        self.dfc -= self.currentArmour[1][1]
+        self.currentArmour[1] = None,None
+    if choice == "3":
+        self.dfc -= self.currentArmour[2][1]
+        self.currentArmour[2] = None,None
+    if choice == "4":
+        self.dfc -= self.currentArmour[3][1]
+        self.currentArmour[3] = None,None
+    if choice == "5":
+        self.dfc -= self.currentArmour[4][1]
+        self.currentArmour[4] = None,None
+    if choice.lower == "x":
+        pass
+        #goback
+
+def viewArmor(self):
+    print(f"""Head: {self.currentArmour[0][0]}
+        Body: {self.currentArmour[1][0]}
+        Gloves: {self.currentArmour[2][0]}
+        Leggings: {self.currentArmour[3][0]}
+        Boots: {self.currentArmour[4][0]}""")
+
 """ Light Armor """
 
 class leatherHood(Armor):
@@ -96,18 +151,3 @@ class silkShoes(Armor):
         super().__init__("Silk Boots",
                         "Boots made from silk.", "robe", "boots", 2, rdi(1,2))
         self.ID = "2x00015"
-
-def equipArmor(self, armor):
-    if self.atype == armor.atype:
-        if armor.slot == "head":
-            self.currentArmour[0] = armor.ID
-        if armor.slot == "body":
-            self.currentArmour[1] = armor.ID
-        if armor.slot == "gloves":
-            self.currentArmour[3] = armor.ID
-        if armor.slot == "leggings":
-            self.currentArmour[4] = armor.ID
-        if armor.slot == "boots":
-            self.currentArmour[5] = armor.ID
-    else:
-        print("This is for {} class only".format(armor.prof))
