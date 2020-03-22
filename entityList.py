@@ -35,9 +35,3 @@ class kobold(Enemy): # Kobold
             self.hp += rdi(6,9) # ( ͡° ͜ʖ ͡°)
             self.dmg += 7
         self.maxHP = self.hp
-
-"""
-enemy = eyeBat()
-print("{} (Level: {})\nHP: {}/{}".format(enemy.name, enemy.lvl, 
-                                        enemy.hp, enemy.maxHP))
-"""

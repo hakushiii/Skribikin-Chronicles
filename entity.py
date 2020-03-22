@@ -53,7 +53,7 @@ class Player(Entity):
         self.currentArmour = {"head": None, "body": None, "gloves": None, "leggings": None, "boots": None}
         self.inventory = {}
         self.moola = 0
-        self.atype = None
+        self.atype = ""
 
     def equipWeapon(self, weapon):
         if self.prof == weapon.prof:
@@ -75,13 +75,3 @@ class Player(Entity):
                 self.currentArmour[5] = armor.ID
         else:
             print("This is for {} class only".format(armor.prof))
-            
-        
-        
-    """
-    def lvlUP(self):
-        while self.xp >= self.lvlNXT:
-            self.lvl += 1
-            self.xp -= self.lvlNXT
-            self.lvlNXT = round(self.lvlNXT * 1.3)
-    """

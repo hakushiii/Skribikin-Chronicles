@@ -1,7 +1,7 @@
 from entity import Player
 from classSkills import activeSkill
 from entityList import eyeBat
-import weaponList as wL
+
 
 class Knight(Player): # Can wear heavy armor, sword and shield, two-handed sword
     def __init__(self, name):
@@ -35,6 +35,16 @@ class Barbarian(Player): # Can only wear axe, no armors
         self.prof = "ba"
         self.atype = "none"
 
+    def heavy(self, entity):
+        skillDmg = 6 * round(self.lvl * 1.4)
+        skillMPUse = 2 * round(self.lvl * 1.4)
+        slash = activeSkill("Heavy", "A heavy strike", skillDmg, skillMPUse)
+        if self.mp >= slash.dmg:
+            self.mp -= slash.mpUse
+            entity.hp -= slash.dmg
+            print("{} performed Heavy! -{}".format(self.name, slash.dmg))
+        else:
+            print("Not enough MP")
 
 class Mage(Player):  # Can wear robes, staves, tomes
     def __init__(self, name):
@@ -78,14 +88,3 @@ class Archer(Player): # Can wear light armour, crossbows, bows
             print("{} performed Power Shot! -{}".format(self.name, powerShot.dmg))
         else:
             print("Not enough MP")
-
-"""
-myplayer = Knight("KingTako")
-myplayer.equipWeapon(wL.shortSword())
-enemy = eyeBat()
-myplayer.slash(enemy)
-print("{} (Level: {})\nHP: {}/{}".format(enemy.name, enemy.lvl, 
-                                        enemy.hp, enemy.maxHP))
-print("{} (Level: {})\nHP: {}/{}\nMP: {}/{}\n".format(myplayer.name, myplayer.lvl, myplayer.hp, 
-                                                    myplayer.maxHP, myplayer.mp, myplayer.maxMP))
-"""
