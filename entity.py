@@ -1,6 +1,7 @@
 import world
 import pickle
 import armorList
+from time import sleep
 
 class Entity:
     def __init__(self, name, lvl, hp):
@@ -52,12 +53,13 @@ class Player(Entity):
         self.locationX, self.locationY = world.startingPosition
         self.currentWeapon = {"mainHand": None, "offHand": None}
         self.currentArmour = {"head": None, "body": None, "gloves": None, "leggings": None, "boots": None}
-        self.inventory = []
+        self.inventory = list()
         self.moola = 0
         self.atype = None
 
     def printInventory(self):
         for item in self.inventory:
+            sleep(0.3)
             print(item, "\n")
 
     def save(self):

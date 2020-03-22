@@ -25,4 +25,4 @@ class Armor(Items):
         self.dfc = dfc
 
     def __str__(self):
-        return "{}\nArmor: {}\n=========\n\n{}\nValue: {}".format(self.name, self.dfc, self.desc, self.val)
+        return "{}\nArmor: {}\n=========\n{}\nValue: {}".format(self.name, self.dfc, self.desc, self.val)

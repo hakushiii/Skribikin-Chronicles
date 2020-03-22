@@ -3,8 +3,7 @@ from entity import Player
 import sys
 from time import sleep
 import armorList
-
-PROLOGOUEARMOR = [armorList.steelGloves(), armorList.steelHelm(), armorList.steelJacket()]
+from random import randint as rdi
 
 class mapTile:
     def __init__(self, x, y):
@@ -74,7 +73,7 @@ class lootTile(mapTile):
         super().__init__(x, y)
     
     def addLoot(self, player):
-        player.inventory.append(self.item)
+        player.inventory.extend(self.item)
 
     def modifyPlayer(self, player):
         self.addLoot(player)
@@ -86,6 +85,7 @@ class enemyTile(mapTile):
 
 class roomPathTile(mapTile):
     def introText(self):
+        rando = rdi(1,3)
         return """
         It's another part of your home.
         """
@@ -95,8 +95,12 @@ class roomPathTile(mapTile):
 
 class armorWeaponEvent(lootTile):
     def __init__(self, x, y):
-        global PROLOGOUEARMOR
-        super().__init__(x, y, armorList.steelGloves())
+        self.prologueArmor = [armorList.steelGloves(), 
+                            armorList.steelHelm(), 
+                            armorList.steelJacket(), 
+                            armorList.steelPants(), 
+                            armorList.steelShoes()]
+        super().__init__(x, y, self.prologueArmor)
 
     def introText(self):
         return """

@@ -14,6 +14,7 @@ def play():
         for action in availableActions:
             print(action)
         actionInput = input("\nAction: ")
+        print()
         for action in availableActions:
             if actionInput == action.hotkey:
                 player.doAction(action, **action.kwargs)
