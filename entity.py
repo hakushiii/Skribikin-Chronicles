@@ -37,6 +37,13 @@ class Enemy(Entity):
         super().__init__(name, lvl, hp)
         self.dmg = dmg
 
+    def attack(self, entity):
+        damage = self.dmg
+        if entity.dfc > 0:
+            damage = damage / entity.dfc
+        entity.hp -= damage
+        print("{} performed a hit! -{:.2f}".format(self.name, damage))
+
 class Player(Entity):
     def __init__(self, name, prof):
         super().__init__(name, 1, 50)
@@ -57,6 +64,11 @@ class Player(Entity):
         self.moola = 0
         self.atype = None
         self.dfc = 0
+
+    def basic(self, entity):
+        basicDmg = 3 * round(self.lvl * 1.3)
+        entity.hp -= basicDmg
+        print("{} performed Basic Attack! -{}".format(self.name, basicDmg))
 
     def printInventory(self):
         for item in self.inventory:
