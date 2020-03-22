@@ -52,10 +52,11 @@ class Player(Entity):
         self.dex = 1
         self.locationX, self.locationY = world.startingPosition
         self.currentWeapon = {"mainHand": None, "offHand": None}
-        self.currentArmour = {"head": None, "body": None, "gloves": None, "leggings": None, "boots": None}
+        self.currentArmour = [(None, None),(None, None),(None, None),(None, None),(None, None)]
         self.inventory = list()
         self.moola = 0
         self.atype = None
+        self.dfc = 0
 
     def printInventory(self):
         for item in self.inventory:
@@ -98,17 +99,54 @@ class Player(Entity):
         else:
             print("This is for {} class only".format(weapon.prof))
 
-    def equipArmor(self, armor):
-        if self.atype in armor.atype:
+    def equipArmor(self,armor):
+        if self.atype == armor.atype:
             if armor.slot == "head":
-                self.currentArmour[0] = armor.ID
+                self.currentArmour[0] = armor
+                self.dfc += armor.dfc
+                print(f"{armor.name} equipped.")
             if armor.slot == "body":
-                self.currentArmour[1] = armor.ID
+                self.currentArmour[1] = armor
+                self.dfc += armor.dfc
+                print(f"{armor.name} equipped.")
             if armor.slot == "gloves":
-                self.currentArmour[3] = armor.ID
+                self.currentArmour[2] = armor
+                self.dfc += armor.dfc
+                print(f"{armor.name} equipped.")
             if armor.slot == "leggings":
-                self.currentArmour[4] = armor.ID
+                self.currentArmour[3] = armor
+                self.dfc += armor.dfc
+                print(f"{armor.name} equipped.")
             if armor.slot == "boots":
-                self.currentArmour[5] = armor.ID
+                self.currentArmour[4] = armor
+                self.dfc += armor.dfc
+                print(f"{armor.name} equipped.")
         else:
-            print("This is for {} class only".format(armor.prof))
+            print("This is for {} class only".format(armor.atype))
+    
+    def equipArmorCommand(self):
+        n = 1
+        print("Select item to equip.")
+        for armor in self.inventory:
+            print(f"[{n}] {armor}")
+            n+=1
+        choice = int(input(">"))
+        Player.equipArmor(self, self.inventory[choice - 1])
+        self.inventory.remove(self.inventory[choice - 1])
+
+    def unEquipArmor(self, choice):
+        self.currentArmour[choice] = None,None
+
+    def unEquipArmorCommand(self):
+        n = 1
+        print("Select item to equip.")
+        for armor in self.currentArmour:
+            print(f"[{n}] {armor}")
+            n+=1
+        choice = int(input(">"))
+        choice -= 1
+        self.inventory.append(self.currentArmour[choice])
+        Player.unEquipArmor(self, choice)
+        
+
+        

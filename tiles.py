@@ -32,6 +32,8 @@ class mapTile:
     def availableActions(self):
         moves = self.adjacentMoves()
         moves.append(actions.viewInventory())
+        moves.append(actions.equipArmour())
+        moves.append(actions.unEquipArmour())
         moves.append(actions.saveFile())
         moves.append(actions.exitGame())
 
@@ -104,11 +106,18 @@ class roomPathTile(mapTile):
 
 class armorWeaponEvent(lootTile):
     def __init__(self, x, y):
-        self.prologueArmor = [armorList.steelGloves(), 
-                            armorList.steelHelm(), 
-                            armorList.steelJacket(), 
-                            armorList.steelPants(), 
-                            armorList.steelShoes()]
+
+        steelGloves = armorList.steelGloves() 
+        steelHelm = armorList.steelHelm() 
+        steelJacket = armorList.steelJacket()
+        steelPants = armorList.steelPants()
+        steelShoes = armorList.steelShoes()
+
+        self.prologueArmor = [steelGloves,
+                            steelHelm,
+                            steelJacket, 
+                            steelPants, 
+                            steelShoes]
         super().__init__(x, y, self.prologueArmor)
 
     def introText(self):

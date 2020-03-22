@@ -23,6 +23,6 @@ class Armor(Items):
         self.slot = slot
         self.atype = atype
         self.dfc = dfc
-
+    
     def __str__(self):
-        return "{}\nArmor: {}\n=========\n{}\nValue: {}".format(self.name, self.dfc, self.desc, self.val)
+        return "{} Armor: {}".format(self.name, self.dfc)

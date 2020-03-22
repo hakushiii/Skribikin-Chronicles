@@ -37,3 +37,11 @@ class saveFile(Action):
 class exitGame(Action):
     def __init__(self):
         super().__init__(Player.exit, "Exit Game", "x")
+
+class equipArmour(Action):
+    def __init__(self):
+        super().__init__(Player.equipArmorCommand, "Equip Armour", "a")
+
+class unEquipArmour(Action):
+    def __init__(self):
+        super().__init__(Player.unEquipArmorCommand, "UnEquip Armour", "u")

@@ -10,6 +10,7 @@ class Knight(Player): # Can wear heavy armor, sword and shield, two-handed sword
         self.hp = self.hp + (self.vit * 10)
         self.maxHP = self.hp
         self.maxMP = self.mp
+        self.atype = "heavy"
 
     def slash(self, entity):
         skillDmg = 5 * round(self.lvl * 1.4)
