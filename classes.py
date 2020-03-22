@@ -17,7 +17,7 @@ class Knight(Player): # Can wear heavy armor, sword and shield, two-handed sword
         skillDmg = 5 * round(self.lvl * 1.4)
         skillMPUse = 2 * round(self.lvl * 1.4)
         slash = activeSkill("Slash", "A powerful strike", skillDmg, skillMPUse)
-        if self.mp >= slash.dmg:
+        if self.mp >= slash.mpUse:
             self.mp -= slash.mpUse
             entity.hp -= slash.dmg
             print("{} performed Slash! -{}".format(self.name, slash.dmg))
@@ -37,7 +37,7 @@ class Barbarian(Player): # Can only wear axe, no armors
         skillDmg = 6 * round(self.lvl * 1.4)
         skillMPUse = 2 * round(self.lvl * 1.4)
         heavy = activeSkill("Heavy", "A heavy strike", skillDmg, skillMPUse)
-        if self.mp >= heavy.dmg:
+        if self.mp >= heavy.mpUse:
             self.mp -= heavy.mpUse
             entity.hp -= heavy.dmg
             print("{} performed Heavy! -{}".format(self.name, heavy.dmg))
@@ -58,7 +58,7 @@ class Mage(Player):  # Can wear robes, staves, tomes
         skillDmg = 6 * round(self.lvl * 1.2)
         skillMPUse = 3 * round(self.lvl * 1.1)
         fireBall = activeSkill("Fire Ball", "A heat strike", skillDmg, skillMPUse)
-        if self.mp >= fireBall.dmg:
+        if self.mp >= fireBall.mpUse:
             self.mp -= fireBall.mpUse
             entity.hp -= fireBall.dmg
             print("{} performed Fire Ball! -{}".format(self.name, fireBall.dmg))
@@ -78,9 +78,9 @@ class Archer(Player): # Can wear light armour, crossbows, bows
         skillDmg = 5 * round(self.lvl * 1.3)
         skillMPUse = 2 * round(self.lvl * 1.4)
         powerShot = activeSkill("Power Shot", "A piercing strike", skillDmg, skillMPUse)
-        if self.mp >= powerShot.dmg:
+        if self.mp >= powerShot.mpUse:
             self.mp -= powerShot.mpUse
             entity.hp -= powerShot.dmg
             print("{} performed Power Shot! -{}".format(self.name, powerShot.dmg))
         else:
-            print("Not enough MP")
+            print(f"Not enough MP")

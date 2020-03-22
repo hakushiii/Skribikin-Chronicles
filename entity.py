@@ -36,8 +36,11 @@ class Enemy(Entity):
         self.dmg = dmg
 
     def attack(self, entity):
-        entity.hp -= self.dmg
-        print("{} performed a hit! -{}".format(self.name, self.dmg))
+        damage = self.dmg
+        if entity.dfc > 0:
+            damage = damage / entity.dfc
+        entity.hp -= damage
+        print("{} performed a hit! -{:.2f}".format(self.name, damage))
 
 
 class Player(Entity):

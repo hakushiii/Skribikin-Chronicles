@@ -11,20 +11,24 @@ def battleON(player,enemy):
 
         if enemy.hp <= 0:
             print(f"{enemy.name} has fainted.")
-            player.xp += player.xp + enemy.lvl
+            player.xp += player.xp + (enemy.lvl*2)
             print(f"{player.name} has gained {enemy.lvl}XP!")
-            
+            if player.xp >= player.lvlNXT:
+                player.xp = player.lvlNXT - player.xp
+                player.lvlNXT = player.lvlNXT + 5
+                player.lvl += 1
+                print(f"{player.name} has leveled up!, is now level {player.lvl}")
 
     turn = 1
     while (player.hp > 0) and (enemy.hp > 0):
         
         print(f"\tTURN", turn)
-        print(f"{player.name}\t{enemy.name}")
-        print(f"(Level: {player.lvl})\t(Level:{enemy.lvl})")
-        print(f"HP: {player.hp}/{player.maxHP}     \tHP: {enemy.hp}/{enemy.maxHP}")
-        print(f"MP: {player.mp}/{player.maxMP}")
+        print(f"{player.name}\t\t{enemy.name}")
+        print(f"(Level: {player.lvl})\t\t(Level:{enemy.lvl})")
+        print(f"HP: {player.hp:.2f}/{player.maxHP:.2f}     \tHP: {enemy.hp:.2f}/{enemy.maxHP:.2f}")
+        print(f"MP: {player.mp:.2f}/{player.maxMP:.2f}")
         
-        print("\n1. Basic\t2. Skill\t3.Item\tX. Run")
+        print(f"\n1. Basic\t2. Skill\t3.Item\tX. Run")
         if player.prof == "KNIGHT":
             action = str(input(">"))
             if action == "1":
