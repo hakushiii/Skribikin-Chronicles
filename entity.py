@@ -55,23 +55,10 @@ class Player(Entity):
         self.moola = 0
         self.atype = ""
 
-    def equipWeapon(self, weapon):
-        if self.prof == weapon.prof:
-            self.currentWeapon["mainHand"] = weapon.ID
-        else:
-            print("This is for {} class only".format(weapon.prof))
+    def basic(self, entity):
+        basicDmg = 3 * round(self.lvl * 1.3)
+        entity.hp -= basicDmg
+        print("{} performed Basic Attack! -{}".format(self.name, basicDmg))
 
-    def equipArmor(self, armor):
-        if self.atype in armor.atype:
-            if armor.slot == "head":
-                self.currentArmour[0] = armor.ID
-            if armor.slot == "body":
-                self.currentArmour[1] = armor.ID
-            if armor.slot == "gloves":
-                self.currentArmour[3] = armor.ID
-            if armor.slot == "leggings":
-                self.currentArmour[4] = armor.ID
-            if armor.slot == "boots":
-                self.currentArmour[5] = armor.ID
-        else:
-            print("This is for {} class only".format(armor.prof))
+
+

@@ -97,3 +97,17 @@ class silkShoes(Armor):
                         "Boots made from silk.", "robe", "boots", 2, rdi(1,2))
         self.ID = "2x00015"
 
+def equipArmor(self, armor):
+    if self.atype in armor.atype:
+        if armor.slot == "head":
+            self.currentArmour[0] = armor.ID
+        if armor.slot == "body":
+            self.currentArmour[1] = armor.ID
+        if armor.slot == "gloves":
+            self.currentArmour[3] = armor.ID
+        if armor.slot == "leggings":
+            self.currentArmour[4] = armor.ID
+        if armor.slot == "boots":
+            self.currentArmour[5] = armor.ID
+    else:
+        print("This is for {} class only".format(armor.prof))

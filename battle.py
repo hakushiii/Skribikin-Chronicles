@@ -27,45 +27,74 @@ def battleON(player,enemy):
         print(f"HP: {player.hp}/{player.maxHP}     \tHP: {enemy.hp}/{enemy.maxHP}")
         print(f"MP: {player.mp}/{player.maxMP}")
         
-        print("\n1. Basic\t2. Skill\tX. Run")
-        if player.prof == "kn":
+        print("\n1. Basic\t2. Skill\t3.Item\tX. Run")
+        if player.prof == "KNIGHT":
             action = str(input(">"))
             if action == "1":
-                pass
+                player.basic(enemy)
             if action == "2":
                 player.slash(enemy)
-            if action == "X" or "x":
+            if action == "3":
                 pass
-        if player.prof == "ba":
+            if action == "X" or "x":
+                chance = rdi(1,10)
+                if chance > 5:
+                    print("You have escaped.")
+                    break
+                if chance <= 5:
+                    print("You have failed to flee.")
+        if player.prof == "BARBARIAN":
             action = str(input(">"))
             if action == "1":
-                pass
+                player.basic(enemy)
             if action == "2":
                 player.heavy(enemy)
-            if action == "X" or "x":
+            if action == "3":
                 pass
-        if player.prof == "ma":
+            if action == "X" or "x":
+                chance = rdi(1,10)
+                if chance > 5:
+                    print("You have escaped.")
+                    break
+                if chance <= 5:
+                    print("You have failed to flee.")
+        if player.prof == "MAGE":
             action = str(input(">"))
             if action == "1":
-                pass
+                player.basic(enemy)
             if action == "2":
                 player.fireBall(enemy)
-            if action == "X" or "x":
+            if action == "3":
                 pass
-        if player.prof == "ar":
+            if action == "X" or "x":
+                chance = rdi(1,10)
+                if chance > 5:
+                    print("You have escaped.")
+                    break
+                if chance <= 5:
+                    print("You have failed to flee.")
+        if player.prof == "ARCHER":
             action = str(input(">"))
             if action == "1":
-                pass
+                player.basic(enemy)
             if action == "2":
                 player.powerShot(enemy)
-            if action == "X" or "x":
+            if action == "3":
                 pass
+            if action == "X" or "x":
+                chance = rdi(1,10)
+                if chance > 5:
+                    print("You have escaped.")
+                    break
+                if chance <= 5:
+                    print("You have failed to flee.")
 
         checkHP()
         if (player.hp <= 0) or (enemy.hp <= 0):
             break
 
         enemyAttack()
+
         checkHP()
         if (player.hp <= 0) or (enemy.hp <= 0):
             break

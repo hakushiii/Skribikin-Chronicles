@@ -26,7 +26,8 @@ class TwoHandedSword(Weapon):
 class Axe(Weapon):
     def __init__(self):
         super().__init__("Axe",
-                        "something something")
+                        "Heavy Blade that can cut through anything.",
+                        "")
         self.ID = "1x00003"
 
 """ Mage Weapon """
@@ -60,3 +61,9 @@ class crossBow(Weapon):
         super().__init__("Crossbow",
                         "A bow for cheeky bastards.")
         self.ID = "1x00008"
+
+def equipWeapon(self, weapon):
+    if self.prof == weapon.prof:
+        self.currentWeapon["mainHand"] = weapon.ID
+    else:
+        print("This is for {} class only".format(weapon.prof))

@@ -11,7 +11,6 @@ class Knight(Player): # Can wear heavy armor, sword and shield, two-handed sword
         self.hp = self.hp + (self.vit * 10)
         self.maxHP = self.hp
         self.maxMP = self.mp
-        self.prof = "kn"
         self.atype = "heavy"
 
     def slash(self, entity):
@@ -32,17 +31,16 @@ class Barbarian(Player): # Can only wear axe, no armors
         self.hp = self.hp + (self.vit * 5)
         self.maxHP = self.hp
         self.maxMP = self.mp
-        self.prof = "ba"
         self.atype = "none"
 
     def heavy(self, entity):
         skillDmg = 6 * round(self.lvl * 1.4)
         skillMPUse = 2 * round(self.lvl * 1.4)
-        slash = activeSkill("Heavy", "A heavy strike", skillDmg, skillMPUse)
-        if self.mp >= slash.dmg:
-            self.mp -= slash.mpUse
-            entity.hp -= slash.dmg
-            print("{} performed Heavy! -{}".format(self.name, slash.dmg))
+        heavy = activeSkill("Heavy", "A heavy strike", skillDmg, skillMPUse)
+        if self.mp >= heavy.dmg:
+            self.mp -= heavy.mpUse
+            entity.hp -= heavy.dmg
+            print("{} performed Heavy! -{}".format(self.name, heavy.dmg))
         else:
             print("Not enough MP")
 
@@ -54,7 +52,6 @@ class Mage(Player):  # Can wear robes, staves, tomes
         self.mp = self.mp + (self.int * 10)
         self.maxHP = self.hp
         self.maxMP = self.mp
-        self.prof = "ma"
         self.atype = "robe"
     
     def fireBall(self, entity):
@@ -75,7 +72,6 @@ class Archer(Player): # Can wear light armour, crossbows, bows
         self.hp = (self.hp - 20) + (self.vit * 10)
         self.maxHP = self.hp
         self.maxMP = self.mp
-        self.prof = "ar"
         self.atype = "light"
 
     def powerShot(self, entity):
