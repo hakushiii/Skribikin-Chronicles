@@ -1,4 +1,6 @@
-import world, pickle
+import world
+import pickle
+import armorList
 
 class Entity:
     def __init__(self, name, lvl, hp):
@@ -50,8 +52,9 @@ class Player(Entity):
         self.locationX, self.locationY = world.startingPosition
         self.currentWeapon = {"mainHand": None, "offHand": None}
         self.currentArmour = {"head": None, "body": None, "gloves": None, "leggings": None, "boots": None}
-        self.inventory = {}
+        self.inventory = []
         self.moola = 0
+        self.atype = None
 
     def printInventory(self):
         for item in self.inventory:
@@ -86,3 +89,24 @@ class Player(Entity):
         actionMethod = getattr(self, action.method.__name__)
         if actionMethod:
             actionMethod(**kwargs)
+
+    def equipWeapon(self, weapon):
+        if self.prof == weapon.prof:
+            self.currentWeapon["mainHand"] = weapon.ID
+        else:
+            print("This is for {} class only".format(weapon.prof))
+
+    def equipArmor(self, armor):
+        if self.atype in armor.atype:
+            if armor.slot == "head":
+                self.currentArmour[0] = armor.ID
+            if armor.slot == "body":
+                self.currentArmour[1] = armor.ID
+            if armor.slot == "gloves":
+                self.currentArmour[3] = armor.ID
+            if armor.slot == "leggings":
+                self.currentArmour[4] = armor.ID
+            if armor.slot == "boots":
+                self.currentArmour[5] = armor.ID
+        else:
+            print("This is for {} class only".format(armor.prof))

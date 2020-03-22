@@ -1,18 +1,10 @@
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-		prologueTile	roomPathTile
+		
+		
+		
+		
+		
+		
+		
+		roomPathTile
+		roomPathTile
+prologueTile	roomPathTile	armorWeaponEvent

@@ -12,7 +12,7 @@ class shortSword(Weapon):
         self.ID = "1x00001"
 
     def equipWeap(self, player):
-        if entity.prof == "kn":
-            entity.currentWeapon["mainHand"] = self.ID
+        if player.prof == "kn":
+            player.currentWeapon["mainHand"] = self.ID
         else:
             print("Your class is not a Swordsman")

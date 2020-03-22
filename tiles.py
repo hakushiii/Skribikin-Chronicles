@@ -2,6 +2,9 @@ import entityList, world, actions
 from entity import Player
 import sys
 from time import sleep
+import armorList
+
+PROLOGOUEARMOR = [armorList.steelGloves(), armorList.steelHelm(), armorList.steelJacket()]
 
 class mapTile:
     def __init__(self, x, y):
@@ -10,6 +13,9 @@ class mapTile:
         self.count = 0
 
     def introText(self):
+        pass
+
+    def modifyPlayer(self):
         pass
 
     def adjacentMoves(self):
@@ -58,6 +64,20 @@ class prologueTile(mapTile):
 
             You: I wish I were in that bed... But I have work to do.
             """
+        
+    def modifyPlayer(self, player):
+        pass
+
+class lootTile(mapTile):
+    def __init__(self, x, y, item):
+        self.item = item
+        super().__init__(x, y)
+    
+    def addLoot(self, player):
+        player.inventory.append(self.item)
+
+    def modifyPlayer(self, player):
+        self.addLoot(player)
 
 class enemyTile(mapTile):
     def __init__(self, x, y, enemy):
@@ -70,5 +90,15 @@ class roomPathTile(mapTile):
         It's another part of your home.
         """
 
-class armorWeaponEvent():
-    pass
+    def modifyPlayer(self, player):
+        pass
+
+class armorWeaponEvent(lootTile):
+    def __init__(self, x, y):
+        global PROLOGOUEARMOR
+        super().__init__(x, y, armorList.steelGloves())
+
+    def introText(self):
+        return """
+        You: Gotta suit myself up!
+        """
