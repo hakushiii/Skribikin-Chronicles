@@ -5,18 +5,14 @@ def battleON(player,enemy):
     def checkHP():
         if player.hp <= 0:
             print(f"{player.name} has fainted.")
+            player.hp = player.maxHP
+            player.mp = player.maxMP
+            #goto town
 
         if enemy.hp <= 0:
             print(f"{enemy.name} has fainted.")
-
-    def enemyAttack():
-        moveset = rdi(1,3)
-        if moveset == 1:
-            pass
-        if moveset == 2:
-            pass
-        if moveset == 3:
-            pass
+            player.xp += player.xp + enemy.lvl
+            print(f"{player.name} has gained {enemy.lvl}XP!")
 
     turn = 1
     while (player.hp > 0) and (enemy.hp > 0):
@@ -36,7 +32,7 @@ def battleON(player,enemy):
                 player.slash(enemy)
             if action == "3":
                 pass
-            if action == "X" or "x":
+            if action == "X" or action == "x":
                 chance = rdi(1,10)
                 if chance > 5:
                     print("You have escaped.")
@@ -51,7 +47,7 @@ def battleON(player,enemy):
                 player.heavy(enemy)
             if action == "3":
                 pass
-            if action == "X" or "x":
+            if action == "X" or action == "x":
                 chance = rdi(1,10)
                 if chance > 5:
                     print("You have escaped.")
@@ -66,7 +62,7 @@ def battleON(player,enemy):
                 player.fireBall(enemy)
             if action == "3":
                 pass
-            if action == "X" or "x":
+            if action == "X" or action == "x":
                 chance = rdi(1,10)
                 if chance > 5:
                     print("You have escaped.")
@@ -81,7 +77,7 @@ def battleON(player,enemy):
                 player.powerShot(enemy)
             if action == "3":
                 pass
-            if action == "X" or "x":
+            if action == "X" or action == "x":
                 chance = rdi(1,10)
                 if chance > 5:
                     print("You have escaped.")
@@ -93,7 +89,7 @@ def battleON(player,enemy):
         if (player.hp <= 0) or (enemy.hp <= 0):
             break
 
-        enemyAttack()
+        enemy.attack(player)
 
         checkHP()
         if (player.hp <= 0) or (enemy.hp <= 0):

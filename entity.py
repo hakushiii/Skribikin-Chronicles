@@ -35,6 +35,10 @@ class Enemy(Entity):
         super().__init__(name, lvl, hp)
         self.dmg = dmg
 
+    def attack(self, entity):
+        entity.hp -= self.dmg
+        print("{} performed a hit! -{}".format(self.name, self.dmg))
+
 
 class Player(Entity):
     def __init__(self, name, prof):
