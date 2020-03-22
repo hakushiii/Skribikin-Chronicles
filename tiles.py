@@ -86,9 +86,18 @@ class enemyTile(mapTile):
 class roomPathTile(mapTile):
     def introText(self):
         rando = rdi(1,3)
-        return """
-        It's another part of your home.
-        """
+        if rando == 1:
+            return """
+            It's another part of your home.
+            """
+        elif rando == 2:
+            return """
+            Would you look at that? It's another part of your house.
+            """
+        else:
+            return """
+            You: Damn my house is kinda falling apart.
+            """
 
     def modifyPlayer(self, player):
         pass

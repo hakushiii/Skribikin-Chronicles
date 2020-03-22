@@ -1,5 +1,6 @@
 import world, pickle
 from classes import Knight
+from sys import exit
 
 def play():
     world.loadTiles()
