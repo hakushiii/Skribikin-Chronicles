@@ -217,9 +217,13 @@ class dragonGodTile(mapTile):
         dialogue = ["Dragon God: You mortal! I smell something familiar with you.",  "You: What is it?", "Dragon God: IT IS MY PRECIOUS GEM!!!!",
                     "* R O A R *", "You took it in your pocket and taunted the beast with it.", "You: Is this what you've been looking for?",
                     "Dragon God: GIVE IT BACK!!!!!!!!", "* R O A R *", "You: Then fight for it!", "The beastly god did not fear such a puny being",
-                    "It flew high in the sky then came crashing destroying every bones you have!", "In the end, you were no match for a god."]
+                    "It flew high in the sky then came crashing destroying every bones you have!", "In the end, you were no match for a god.\n"]
         for sentence in dialogue:
             print("\n")
             for letter in sentence:
                 sleep(0.07)
                 print(letter, end="")
+        return ""
+        
+    def modifyPlayer(self, player):
+        player.hp = 0

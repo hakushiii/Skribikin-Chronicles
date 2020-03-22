@@ -31,16 +31,20 @@ def loadFile():
     while player.hp > 0:
         room = world.tileExists(player.locationX, player.locationY)
         room.modifyPlayer(player)
-        print("Choose an action: \n")
-        availableActions = room.availableActions()
-        for action in availableActions:
-            print(action)
-        actionInput = input("\nAction > ")
-        print()
-        for action in availableActions:
-            if actionInput == action.hotkey:
-                player.doAction(action, **action.kwargs)
-                break
+        if player.hp > 0:
+            print("Choose an action: \n")
+            availableActions = room.availableActions()
+            for action in availableActions:
+                print(action)
+            actionInput = input("\nAction > ")
+            print()
+            for action in availableActions:
+                if actionInput == action.hotkey:
+                    player.doAction(action, **action.kwargs)
+                    break
+        else:
+            print("You have died.")
+            break
 
 print("S = START\nL = LOAD\nX = QUIT\n")
 choice = input("Input > ")
