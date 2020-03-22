@@ -2,9 +2,9 @@ import world, pickle
 from classes import Knight
 from sys import exit
 
-def play():
+def play(name):
     world.loadTiles()
-    player = Knight("KingTako")
+    player = Knight(name)
     room = world.tileExists(player.locationX, player.locationY)
     print(room.introText())
     while player.hp > 0:
@@ -49,7 +49,8 @@ def loadFile():
 print("S = START\nL = LOAD\nX = QUIT\n")
 choice = input("Input > ")
 if choice.lower() == "s":
-    play()
+    name = input("What is your name? ")
+    play(name)
 elif choice.lower() == "l":
     loadFile()
 elif choice.lower() == "x":
