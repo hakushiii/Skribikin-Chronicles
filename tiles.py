@@ -4,6 +4,7 @@ import sys
 from time import sleep
 import armorList
 from random import randint as rdi
+import battle
 
 class mapTile:
     def __init__(self, x, y):
@@ -85,6 +86,9 @@ class enemyTile(mapTile):
         self.enemy = enemy
         super().__init__(x, y)
 
+    def modifyPlayer(self, player):
+        battle.battleON(player, self.enemy)
+
 class roomPathTile(mapTile):
     def introText(self):
         rando = rdi(1,3)
@@ -124,3 +128,98 @@ class armorWeaponEvent(lootTile):
         return """
         You: Gotta suit myself up!
         """
+
+class exitDoorTile(mapTile):
+    def introText(self):
+        return """
+        You left your home.
+
+        You: Now, to begin what has started!
+        """
+
+    def modifyPlayer(self, player):
+        pass
+
+class soldierConvoTile(mapTile):
+    def introText(self):
+        return """
+        Soldier: Hero! We need your help!
+        We are desperately losing this battle!
+
+        You: I'm on my way!
+        """
+
+    def modifyPlayer(self, player):
+        pass
+
+class castlePathTile(mapTile):
+    def introText(self):
+        rando = rdi(1,3)
+        if rando == 1:
+            return """
+            As you pass through this path, you witness many dying soldiers
+            """
+        elif rando == 2:
+            return """
+            Men are suffering from this devastating attack
+            """
+        else:
+            return """
+            You see men dying.
+
+            You: I'll make sure you pay for this!
+            """
+
+    def modifyPlayer(self, player):
+        pass
+
+class gateExitTile(mapTile):
+    def introText(self):
+        return """
+        The borders of the castle is barricaded
+
+        You: LET ME THROUGH!
+
+        *The soldiers removed the barricade
+
+        You: Don't let anyone get through here! I'll defeat this fiend once and for all!
+        """
+
+    def modifyPlayer(self, player):
+        pass
+
+class plainPathTile(mapTile):
+    def introText(self):
+        return """
+        You see men are fleeing from the scene.
+        They have suffered a massive amount of damage.
+        """
+
+    def modifyPlayer(self, player):
+        pass
+
+class minionTile(enemyTile):
+    def __init__(self, x, y):
+        super().__init__(x, y, entityList.beetle())
+
+    def introText(self):
+        if self.enemy.hp > 0:
+            return """
+            A minion blocks your way!
+            """
+        else:
+            return """
+            The dead minion lies on the ground.
+            """
+            
+class dragonGodTile(mapTile):
+    def introText(self):
+        dialogue = ["Dragon God: You mortal! I smell something familiar with you.",  "You: What is it?", "Dragon God: IT IS MY PRECIOUS GEM!!!!",
+                    "* R O A R *", "You took it in your pocket and taunted the beast with it.", "You: Is this what you've been looking for?",
+                    "Dragon God: GIVE IT BACK!!!!!!!!", "* R O A R *", "You: Then fight for it!", "The beastly god did not fear such a puny being",
+                    "It flew high in the sky then came crashing destroying every bones you have!", "In the end, you were no match for a god."]
+        for sentence in dialogue:
+            print("\n")
+            for letter in sentence:
+                sleep(0.07)
+                print(letter, end="")

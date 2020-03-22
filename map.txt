@@ -1,10 +1,12 @@
-		
-		
-		
-		
-		
-		
-		
-		roomPathTile
-		roomPathTile
-prologueTile	roomPathTile	armorWeaponEvent
+		dragonGodTile	
+		minionTile	minionTile
+			minionTile
+		plainPathTile	minionTile
+		gateExitTile	
+		castlePathTile	
+		castlePathTile	
+		soldierConvoTile	
+		exitDoorTile	
+		roomPathTile	
+		roomPathTile	
+prologueTile	roomPathTile	armorWeaponEvent	
