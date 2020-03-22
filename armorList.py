@@ -98,7 +98,7 @@ class silkShoes(Armor):
         self.ID = "2x00015"
 
 def equipArmor(self, armor):
-    if self.atype in armor.atype:
+    if self.atype == armor.atype:
         if armor.slot == "head":
             self.currentArmour[0] = armor.ID
         if armor.slot == "body":
